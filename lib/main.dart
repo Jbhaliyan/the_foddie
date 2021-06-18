@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_foddie/screens/categoryMealsScreen.dart';
+import 'package:the_foddie/screens/filters_screen.dart';
 import 'package:the_foddie/screens/meal_detail.dart';
 import 'package:the_foddie/screens/tab_screen.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => TabsScreen(), //to route all the unnamed routes
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        FilterScreen.routeName: (ctx) => FilterScreen(),
       },
       //
       // onGenerateRoute: (settings) {
