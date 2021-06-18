@@ -1,5 +1,7 @@
 # the_foddie
 
+This is basic recipe application where you get recipe of different types of food like italian, chinese and so on.
+You can also save the recipes to favourite to ease access for next time.
 A new Flutter project.
 
 ## Getting Started
