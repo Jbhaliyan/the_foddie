@@ -4,6 +4,9 @@ import 'package:the_foddie/dummy_data.dart';
 class MealDetailScreen extends StatelessWidget {
   // const MealDetailScreen({ Key? key }) : super(key: key);
   static const routeName = '/meal_detail';
+  final Function toggleFavourite;
+  final Function isFaourite;
+  MealDetailScreen(this.toggleFavourite, this.isFaourite);
 
   Widget builSectionTitle(BuildContext context, String title) {
     return Container(
@@ -81,10 +84,8 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
+        child: Icon(isFaourite(mealId) ? Icons.star : Icons.star_border),
+        onPressed: () => toggleFavourite(mealId),
       ),
     );
   }

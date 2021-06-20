@@ -16,7 +16,7 @@ class Categories extends StatelessWidget {
         crossAxisSpacing: 20,
         mainAxisSpacing: 20,
       ),
-      children: (DUMMY_CATEGORIES as List<Category>)
+      children: (DUMMY_CATEGORIES)
           .map(
             (catData) => CategoryItem(
               catData.id,
