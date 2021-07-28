@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:the_foddie/dummy_data.dart';
+import 'package:the_foddie/utilities/providers/meals_provider.dart';
 
 class MealDetailScreen extends StatelessWidget {
   // const MealDetailScreen({ Key? key }) : super(key: key);
@@ -11,7 +13,7 @@ class MealDetailScreen extends StatelessWidget {
   Widget builSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
-      child: Text('Ingrdients', style: Theme.of(context).textTheme.headline1),
+      child: Text(title, style: Theme.of(context).textTheme.headline1),
     );
   }
 
@@ -33,7 +35,8 @@ class MealDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
-    final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
+    final selectedMeal = Provider.of<Meals>(context).findById(mealId);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${selectedMeal.title}'),
@@ -49,7 +52,7 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            builSectionTitle(context, 'Ingridents'),
+            builSectionTitle(context, 'Ingredients'),
             buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Card(

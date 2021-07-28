@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_foddie/screens/categories.dart';
 import 'package:the_foddie/screens/favourites_Screen.dart';
-import 'package:the_foddie/utilities/models/meal.dart';
+import 'package:the_foddie/utilities/providers/meal.dart';
 import 'package:the_foddie/utilities/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {

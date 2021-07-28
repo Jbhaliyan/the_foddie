@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screens/categoryMealsScreen.dart';
 import 'screens/filters_screen.dart';
 import 'screens/meal_detail.dart';
 import 'screens/tab_screen.dart';
 import 'dummy_data.dart';
 import 'screens/categories.dart';
-import 'utilities/models/meal.dart';
+import 'utilities/providers/meal.dart';
+import 'utilities/providers/meals_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,54 +74,61 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Colors.pink,
-        primarySwatch: Colors.pink,
-        accentColor: Colors.amber,
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        fontFamily: 'Raleway',
-        textTheme: ThemeData.light().textTheme.copyWith(
-              bodyText1: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Meals(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.pink,
+          primarySwatch: Colors.pink,
+          accentColor: Colors.amber,
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: 'Raleway',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyText1: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                bodyText2: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                headline1: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              bodyText2: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
-              ),
-              headline1: TextStyle(
-                fontSize: 20,
-                fontFamily: 'RobotoCondensed',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-      ),
-      // home: Categories(),
-      initialRoute: '/', // default is '/'
-      routes: {
-        '/': (ctx) =>
-            TabsScreen(_favouriteMeals), //to route all the unnamed routes
-        CategoryMealsScreen.routeName: (ctx) =>
-            CategoryMealsScreen(_availableMeals),
-        MealDetailScreen.routeName: (ctx) =>
-            MealDetailScreen(_toggleFavourite, _isMealFavourite),
-        FilterScreen.routeName: (ctx) => FilterScreen(_filters, _setFilters),
-      },
-      //
-      // onGenerateRoute: (settings) {
-      //   print(settings.arguments);
-      //   return MaterialPageRoute(
-      //     builder: (ctx) => Categories(),
-      //   );
-      // },
+        ),
+        // home: Categories(),
+        initialRoute: '/', // default is '/'
+        routes: {
+          '/': (ctx) =>
+              TabsScreen(_favouriteMeals), //to route all the unnamed routes
+          CategoryMealsScreen.routeName: (ctx) =>
+              CategoryMealsScreen(_availableMeals),
+          MealDetailScreen.routeName: (ctx) =>
+              MealDetailScreen(_toggleFavourite, _isMealFavourite),
+          FilterScreen.routeName: (ctx) => FilterScreen(_filters, _setFilters),
+        },
+        //
+        // onGenerateRoute: (settings) {
+        //   print(settings.arguments);
+        //   return MaterialPageRoute(
+        //     builder: (ctx) => Categories(),
+        //   );
+        // },
 
-      //used when nothing is defined in route
-      onUnknownRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (ctx) => Categories(),
-        );
-      },
+        //used when nothing is defined in route
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(
+            builder: (ctx) => Categories(),
+          );
+        },
+      ),
     );
   }
 }

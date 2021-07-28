@@ -11,7 +11,7 @@ enum Affordability {
   Luxurious,
 }
 
-class Meal {
+class Meal with ChangeNotifier {
   final String id;
   final List<String> categories;
   final String title;
@@ -25,8 +25,9 @@ class Meal {
   final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
+  bool isFavourite;
 
-  const Meal({
+  Meal({
     @required this.id,
     @required this.categories,
     @required this.affordability,

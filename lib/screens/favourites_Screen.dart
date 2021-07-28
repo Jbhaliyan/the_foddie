@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:the_foddie/utilities/models/meal.dart';
+import 'package:the_foddie/utilities/providers/meal.dart';
 import 'package:the_foddie/utilities/widgets/meal_item.dart';
 
 class FavouritesScreen extends StatelessWidget {

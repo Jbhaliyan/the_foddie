@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:the_foddie/screens/meal_detail.dart';
-import 'package:the_foddie/utilities/models/meal.dart';
+import 'package:the_foddie/utilities/providers/meal.dart';
 
 class MealItem extends StatelessWidget {
   // const MealItem({ Key? key }) : super(key: key);
@@ -28,15 +28,14 @@ class MealItem extends StatelessWidget {
       case Complexity.Simple:
         return 'Simple';
 
-        // TODO: Handle this case.
         break;
       case Complexity.Challenging:
         return 'Challenging';
-        // TODO: Handle this case.
+
         break;
       case Complexity.Hard:
         return 'Hard';
-        // TODO: Handle this case.
+
         break;
       default:
         return 'Unknown';
@@ -47,15 +46,15 @@ class MealItem extends StatelessWidget {
     switch (affordability) {
       case Affordability.Affordable:
         return 'Affordable';
-        // TODO: Handle this case.
+
         break;
       case Affordability.Pricey:
         return 'Pricey';
-        // TODO: Handle this case.
+
         break;
       case Affordability.Luxurious:
         return 'Expensive';
-        // TODO: Handle this case.
+
         break;
     }
   }
@@ -67,9 +66,7 @@ class MealItem extends StatelessWidget {
       arguments: id,
     )
         .then((result) {
-      if (result != null) {
-        // removeItem(result);
-      }
+      if (result != null) {}
       print(result);
     });
   }

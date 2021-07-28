@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_foddie/utilities/models/meal.dart';
+import 'package:the_foddie/utilities/providers/meal.dart';
 import 'package:the_foddie/utilities/widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
@@ -15,13 +15,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   String categoryTitle;
   List<Meal> displayMeal;
   bool _loaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    //
-  }
 
   @override
   void didChangeDependencies() {
